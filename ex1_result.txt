@@ -1,0 +1,10 @@
+name, success_rate, success_count
+normal,	94.60501%,	1964
+hashing_1,	70.76108%,	1469
+hashing_50,	90.75145%,	1884
+hashing_250,	92.87091%,	1928
+hashing_500,	94.17148%,	1955
+hashing_1000,	94.60501%,	1964
+hashing_2500,	95.47206%,	1982
+hashing_5000,	95.42389%,	1981
+hashing_10000,	95.32755%,	1979
