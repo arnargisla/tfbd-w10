@@ -1,7 +1,7 @@
 import sys
 from PIL import Image
 import numpy as np
-import hashlib
+import xxhash
 
 
 def convert_to_grayscale(image):
@@ -46,8 +46,7 @@ def image_hash():
     adjacent_values_comparison_array = compare_adjacent(np.array(pixels).reshape(8,9))
 
     #Convert to hash
-    h = hashlib.md5(adjacent_values_comparison_array).hexdigest()
-
+    h = xxhash.xxh64(np.array_str(adjacent_values_comparison_array)).hexdigest()
     return h
 
 if __name__=="__main__":
