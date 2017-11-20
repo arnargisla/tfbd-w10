@@ -2,7 +2,6 @@ import sys
 from PIL import Image
 import numpy as np
 import hashlib
-import binascii
 
 
 def convert_to_grayscale(image):
