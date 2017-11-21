@@ -31,6 +31,21 @@ def compare_adjacent(pixels):
 
     return comparison_array
 
+def hash_function(differences):
+    outer_hex_string = ''
+    for difference in differences:
+        decimal_value = 0
+        hex_string = []
+        for index, value in enumerate(difference):
+            if value:
+                decimal_value += 2**(index % 8)
+            if (index % 8) == 7:
+                hex_string.append(hex(decimal_value)[2:].rjust(2, '0'))
+                decimal_value = 0
+        outer_hex_string += ''.join(hex_string)
+    
+    return outer_hex_string
+
 def image_hash():
     file = sys.argv[1]
     image = Image.open(file)
@@ -46,7 +61,7 @@ def image_hash():
     adjacent_values_comparison_array = compare_adjacent(np.array(pixels).reshape(8,9))
 
     #Convert to hash
-    h = xxhash.xxh64(np.array_str(adjacent_values_comparison_array)).hexdigest()
+    h = hash_function(adjacent_values_comparison_array.tolist())
     return h
 
 if __name__=="__main__":
